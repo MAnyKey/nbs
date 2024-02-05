@@ -1,4 +1,0 @@
-Command=ycp --format json --profile cluster1 compute instance list --folder-id fake-folder
-Input=
-Command=ycp --format json --profile cluster1 compute instance delete --request -
-Input=

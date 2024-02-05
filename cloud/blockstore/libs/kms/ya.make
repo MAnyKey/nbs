@@ -1,4 +1,0 @@
-RECURSE(
-    iface
-    impl
-)

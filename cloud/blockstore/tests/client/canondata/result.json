@@ -1,8 +1,0 @@
-{
-    "test_with_client.test_destroy_volume": {
-        "uri": "file://test_with_client.test_destroy_volume/results.txt"
-    },
-    "test_with_client.test_successive_remounts_and_writes": {
-        "uri": "file://test_with_client.test_successive_remounts_and_writes/results.txt"
-    }
-}

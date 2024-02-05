@@ -1,3 +1,0 @@
-DataCenter: "dca"
-Rack: "dca-1:1"
-Body: 103058410

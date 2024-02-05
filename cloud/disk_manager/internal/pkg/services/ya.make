@@ -1,9 +1,0 @@
-RECURSE(
-    disks
-    errors
-    filesystem
-    images
-    placementgroup
-    pools
-    snapshots
-)

@@ -1,5 +1,0 @@
-{
-    "test.test_load": {
-        "uri": "file://test.test_load/blockstore-event-log-stats.out.txt"
-    }
-}

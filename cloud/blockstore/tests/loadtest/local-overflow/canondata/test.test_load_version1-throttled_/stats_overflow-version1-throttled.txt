@@ -1,3 +1,0 @@
-component:server/sensor:AppCriticalEvents/ReassignTablet=False
-component:service/sensor:ThrottlerRejectedRequests=True
-component:service/sensor:ThrottlerRejectedRequests/type:hdd=True

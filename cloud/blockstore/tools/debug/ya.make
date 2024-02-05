@@ -1,5 +1,0 @@
-RECURSE(
-    featureconfig
-    formatter
-    readbdev
-)

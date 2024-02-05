@@ -1,5 +1,0 @@
-RECURSE(
-    common
-    server
-    vhost
-)

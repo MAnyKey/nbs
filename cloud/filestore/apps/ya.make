@@ -1,5 +1,0 @@
-RECURSE(
-    client
-    server
-    vhost
-)
