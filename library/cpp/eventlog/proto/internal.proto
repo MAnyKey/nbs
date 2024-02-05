@@ -1,9 +1,0 @@
-option go_package = "github.com/ydb-platform/nbs/library/cpp/eventlog/proto;extensions";
-
-package NEventLogInternal;
-
-message TUnknownEvent {
-};
-
-message TEndOfFrameEvent {
-};
