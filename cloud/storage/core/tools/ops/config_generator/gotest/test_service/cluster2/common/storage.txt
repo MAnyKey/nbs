@@ -1,1 +1,0 @@
-SchemeShardDir: "/pre-prod_myt/NBS"

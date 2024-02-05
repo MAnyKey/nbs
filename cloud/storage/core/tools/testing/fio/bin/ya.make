@@ -1,9 +1,0 @@
-PACKAGE()
-
-FROM_SANDBOX(
-    2326530962
-    EXECUTABLE
-    RENAME usr/bin/fio
-    OUT fio)
-
-END()

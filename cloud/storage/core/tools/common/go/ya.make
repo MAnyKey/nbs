@@ -1,5 +1,0 @@
-RECURSE(
-    configurator
-    log
-    ssh
-)

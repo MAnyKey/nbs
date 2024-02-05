@@ -1,3 +1,0 @@
-RECURSE(
-    compressed_bitmap
-)

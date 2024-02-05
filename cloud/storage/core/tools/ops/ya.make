@@ -1,3 +1,0 @@
-RECURSE(
-    config_generator
-)

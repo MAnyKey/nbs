@@ -1,5 +1,0 @@
-RECURSE(
-    common
-    launcher
-    sender
-)

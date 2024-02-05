@@ -1,3 +1,0 @@
-RECURSE(
-    cpu-wait-monitor
-)
