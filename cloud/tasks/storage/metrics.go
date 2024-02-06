@@ -53,8 +53,8 @@ func (m *storageMetricsImpl) getOrNewMetrics(taskType string) *taskMetrics {
 
 		t = &taskMetrics{
 			created:      subRegistry.Counter("created"),
-			timeTotal:    subRegistry.DurationHistogram("time/total", taskDurationBuckets()),
-			estimateMiss: subRegistry.DurationHistogram("time/estimateMiss", taskDurationBuckets()),
+			timeTotal:    subRegistry.DurationHistogram(subRegistry.ComposeName("time", "total"), taskDurationBuckets()),
+			estimateMiss: subRegistry.DurationHistogram(subRegistry.ComposeName("time", "estimateMiss"), taskDurationBuckets()),
 		}
 		m.taskMetrics[taskType] = t
 	}

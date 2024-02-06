@@ -2,7 +2,6 @@ package persistence
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"github.com/ydb-platform/nbs/cloud/tasks/errors"
@@ -137,7 +136,7 @@ func (c *metricsConfig) CounterVec(
 	labelNames ...string,
 ) ydb_metrics.CounterVec {
 
-	name = join(c.namespace, name)
+	name = c.registry.ComposeName(c.namespace, name)
 	return &counterVec{
 		v: c.registry.CounterVec(
 			name,
@@ -151,7 +150,7 @@ func (c *metricsConfig) GaugeVec(
 	labelNames ...string,
 ) ydb_metrics.GaugeVec {
 
-	name = join(c.namespace, name)
+	name = c.registry.ComposeName(c.namespace, name)
 	return &gaugeVec{
 		v: c.registry.GaugeVec(
 			name,
@@ -165,7 +164,7 @@ func (c *metricsConfig) TimerVec(
 	labelNames ...string,
 ) ydb_metrics.TimerVec {
 
-	name = join(c.namespace, name)
+	name = c.registry.ComposeName(c.namespace, name)
 	return &timerVec{
 		v: c.registry.DurationHistogramVec(
 			name,
@@ -181,7 +180,7 @@ func (c *metricsConfig) HistogramVec(
 	labelNames ...string,
 ) ydb_metrics.HistogramVec {
 
-	name = join(c.namespace, name)
+	name = c.registry.ComposeName(c.namespace, name)
 	return &histogramVec{
 		v: c.registry.HistogramVec(
 			name,
@@ -201,7 +200,7 @@ func (c *metricsConfig) WithSystem(subsystem string) ydb_metrics.Config {
 	return &metricsConfig{
 		details:         c.details,
 		registry:        c.registry,
-		namespace:       join(c.namespace, subsystem),
+		namespace:       c.registry.ComposeName(c.namespace, subsystem),
 		durationBuckets: c.durationBuckets,
 	}
 }
@@ -280,18 +279,4 @@ type timer struct {
 
 func (t *timer) Record(d time.Duration) {
 	t.RecordDuration(d)
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-func join(a, b string) string {
-	if len(a) == 0 {
-		return b
-	}
-
-	if len(b) == 0 {
-		return ""
-	}
-
-	return strings.Join([]string{a, b}, "/")
 }

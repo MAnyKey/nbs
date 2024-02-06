@@ -93,12 +93,12 @@ func (m *runnerMetricsImpl) OnExecutionStarted(state tasks_storage.TaskState) {
 	})
 
 	m.taskMetrics = &taskMetrics{
-		publicErrorsCounter:          subRegistry.Counter("errors/public"),
-		panicCounter:                 subRegistry.Counter("errors/panic"),
-		wrongGenerationErrorsCounter: subRegistry.Counter("errors/wrongGeneration"),
-		retriableErrorsCounter:       subRegistry.Counter("errors/retriable"),
-		nonRetriableErrorsCounter:    subRegistry.Counter("errors/nonRetriable"),
-		nonCancellableErrorsCounter:  subRegistry.Counter("errors/nonCancellable"),
+		publicErrorsCounter:          subRegistry.Counter(subRegistry.ComposeName("task_errors", "public")),
+		panicCounter:                 subRegistry.Counter(subRegistry.ComposeName("task_errors", "panic")),
+		wrongGenerationErrorsCounter: subRegistry.Counter(subRegistry.ComposeName("task_errors", "wrongGeneration")),
+		retriableErrorsCounter:       subRegistry.Counter(subRegistry.ComposeName("task_errors", "retriable")),
+		nonRetriableErrorsCounter:    subRegistry.Counter(subRegistry.ComposeName("task_errors", "nonRetriable")),
+		nonCancellableErrorsCounter:  subRegistry.Counter(subRegistry.ComposeName("task_errors", "nonCancellable")),
 		hangingTasksGauge:            subRegistry.Gauge("hangingTasks"),
 		inflightTasksGauge:           subRegistry.Gauge("inflightTasks"),
 		taskID:                       state.ID,
@@ -256,8 +256,8 @@ func newRunnerMetrics(
 
 	return &runnerMetricsImpl{
 		registry:                     registry,
-		otherErrorsCounter:           registry.Counter("errors/other"),
-		wrongGenerationErrorsCounter: registry.Counter("errors/wrongGeneration"),
+		otherErrorsCounter:           registry.Counter(registry.ComposeName("errors", "other")),
+		wrongGenerationErrorsCounter: registry.Counter(registry.ComposeName("errors", "wrongGeneration")),
 		hangingTaskTimeout:           hangingTaskTimeout,
 		exceptHangingTaskTypes:       exceptHangingTaskTypes,
 		onExecutionStopped:           func() {},
