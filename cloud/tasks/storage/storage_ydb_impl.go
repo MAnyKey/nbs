@@ -711,7 +711,8 @@ func (s *storageYDB) createRegularTasks(
 		if found {
 			lastRunYear, lastRunMonth, lastRunDay := schState.scheduledAt.Date()
 
-			if year >= lastRunYear && month >= lastRunMonth && day > lastRunDay {
+			if year > lastRunYear || (year == lastRunYear && month > lastRunMonth) ||
+				(year == lastRunYear && month == lastRunMonth && day > lastRunDay) {
 				if hour >= schedule.Hour && min >= schedule.Min {
 					shouldSchedule = true
 				}
